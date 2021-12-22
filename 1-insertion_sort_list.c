@@ -32,6 +32,7 @@ void insertion_sort_list(listint_t **list)
 			if (current->next != NULL)
 				current = current->next;
 			tmp = current->next;
+			/* y u no work? */
 		}
 	}
 }
