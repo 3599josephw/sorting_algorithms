@@ -23,6 +23,7 @@ void insertion_sort_list(listint_t **list)
 						break;
 					current = current->prev;
 				}
+				/* possible not hitting while loop */
 				swap = current;
 				current = tmp;
 				tmp = swap;
