@@ -10,6 +10,7 @@ void insertion_sort_list(listint_t **list)
 	if (*list != NULL)
 	{
 		current = *list;
+		/* substitute current for *list for the rest of the file */
 		tmp = current->next;
 		if (tmp == NULL)
 			return;
