@@ -24,7 +24,7 @@ void insertion_sort_list(listint_t **list)
 						break;
 					current = current->prev;
 				}
-				/* possible not hitting while loop */
+				/* possible not hitting second while loop */
 				swap = current;
 				current = tmp;
 				tmp = swap;
@@ -35,7 +35,6 @@ void insertion_sort_list(listint_t **list)
 				current = current->next;
 			/* Critical to not seg fault */
 			tmp = current->next;
-			/* y u no work? */
 		}
 	}
 }
