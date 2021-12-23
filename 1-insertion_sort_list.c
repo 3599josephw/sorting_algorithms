@@ -7,7 +7,7 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *current, *tmp, *tmp1;
 
-	if (*list != NULL)
+	if (list != NULL || *list != NULL)
 	{
 		current = *list;
 		/* substitute current for *list for the rest of the file */
