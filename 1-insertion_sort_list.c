@@ -5,9 +5,9 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *current, *tmp, *swap;
+	listint_t *current, *tmp, *tmp1;
 
-	if (*list != NULL)
+	if (*list != NULL || list != NULL)
 	{
 		current = *list;
 		/* substitute current for *list for the rest of the file */
@@ -25,9 +25,9 @@ void insertion_sort_list(listint_t **list)
 					current = current->prev;
 				}
 				/* possible not hitting second while loop */
-				swap = current;
+				tmp1 = current;
 				current = tmp;
-				tmp = swap;
+				tmp = tmp1;
 				tmp = current->next;
 				print_list(*list);
 			}
