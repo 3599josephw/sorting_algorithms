@@ -2,6 +2,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * merge - merge sorts
+ * @arr: the array
+ * @start: start
+ * @mid: middle
+ * @end: end
+ */
 void merge(int *arr, int start, int mid, int end) {
 	
 	int* temp = (int*)malloc((end - start + 1) * sizeof(int));
