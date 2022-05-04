@@ -2,74 +2,57 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/**
- * merge - mergesort
- * @arr: the array
- * @l: left
- * @m: m!
- * @r: right
- */
-void merge(int arr[], int l, int m, int r)
-{
-	int i, j, k;
-	int n1 = m - l + 1;
-	int n2 = r - m;
+void merge(int *Arr, int start, int mid, int end) {
+	// create a temp array
+	int* temp = (int*)malloc((end - start + 1) * sizeof(int));
+	//int temp[end - start + 1];
 
-	int L[n1], R[n2];
+	// crawlers for both intervals and for temp
+	int i = start, j = mid+1, k = 0;
 
-	for (i = 0; i < n1; i++) {
-		L[i] = arr[l + i];
-	}
-	for (j = 0; j < n2; j++) {
-		R[j] = arr[m + 1 + j];
-	}
-
-	i = 0;
-	j = 0;
-	k = l;
-	while (i < n1 && j < n2) {
-		if (L[i] <= R[j]) {
-			arr[k] = L[i];
-			i++;
+	// traverse both arrays and in each iteration add smaller of both elements in temp 
+	while(i <= mid && j <= end) {
+		if(Arr[i] <= Arr[j]) {
+			temp[k] = Arr[i];
+			k += 1; i += 1;
 		}
 		else {
-			arr[k] = R[j];
-			j++;
+			temp[k] = Arr[j];
+			k += 1; j += 1;
 		}
-		k++;
 	}
 
-	while (i < n1) {
-		arr[k] = L[i];
-		i++;
-		k++;
+	// add elements left in the first interval 
+	while(i <= mid) {
+		temp[k] = Arr[i];
+		k += 1; i += 1;
 	}
 
-	while (j < n2) {
-		arr[k] = R[j];
-		j++;
-		k++;
+	// add elements left in the second interval 
+	while(j <= end) {
+		temp[k] = Arr[j];
+		k += 1; j += 1;
 	}
+
+	// copy temp to original interval
+	for(i = start; i <= end; i += 1) {
+		Arr[i] = temp[i - start];
+	}
+	free(temp);
 }
 
-/**
- * mergeSort - mergesorts
- * @arr: the array
- * @l: left
- * @r: right
- */
-void mergeSort(int arr[], int l, int r)
-{
-	if (l < r) {
-		int m = l + (r - l) / 2;
+// Arr is an array of integer type
+// start and end are the starting and ending index of current interval of Arr
 
-		mergeSort(arr, l, m);
-		mergeSort(arr, m + 1, r);
+void mergeSort(int *Arr, int start, int end) {
 
-		merge(arr, l, m, r);
+	if(start < end) {
+		int mid = (start + end) / 2;
+		mergeSort(Arr, start, mid);
+		mergeSort(Arr, mid+1, end);
+		merge(Arr, start, mid, end);
 	}
 }
-
 /**
  * merge_sort - merge sorts
  * @array: the array
