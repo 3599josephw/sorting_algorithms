@@ -2,55 +2,60 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void merge(int *Arr, int start, int mid, int end) {
-	// create a temp array
+void merge(int *arr, int start, int mid, int end) {
+	
 	int* temp = (int*)malloc((end - start + 1) * sizeof(int));
-	//int temp[end - start + 1];
 
-	// crawlers for both intervals and for temp
+	/* crawlers for both intervals and for temp */
 	int i = start, j = mid+1, k = 0;
 
-	// traverse both arrays and in each iteration add smaller of both elements in temp 
+	/* traverse both arrays and in each iteration add smaller of both elements in temp */
 	while(i <= mid && j <= end) {
-		if(Arr[i] <= Arr[j]) {
-			temp[k] = Arr[i];
+		if(arr[i] <= arr[j]) {
+			temp[k] = arr[i];
 			k += 1; i += 1;
 		}
 		else {
-			temp[k] = Arr[j];
+			temp[k] = arr[j];
 			k += 1; j += 1;
 		}
 	}
 
-	// add elements left in the first interval 
+	/* add elements left in the first interval */
+	
 	while(i <= mid) {
-		temp[k] = Arr[i];
+		temp[k] = arr[i];
 		k += 1; i += 1;
 	}
 
-	// add elements left in the second interval 
+	/* add elements left in the second interval */
 	while(j <= end) {
-		temp[k] = Arr[j];
+		temp[k] = arr[j];
 		k += 1; j += 1;
 	}
 
-	// copy temp to original interval
+	/* copy temp to original interval */
 	for(i = start; i <= end; i += 1) {
-		Arr[i] = temp[i - start];
+		arr[i] = temp[i - start];
 	}
 	free(temp);
 }
 
-// Arr is an array of integer type
-// start and end are the starting and ending index of current interval of Arr
-
-void mergeSort(int *Arr, int start, int end) {
+/* arr is an array of integer type */
+/* start and end are the starting and ending index of current interval of arr */
+/**
+ * mergeSort - merge sorts
+ * @arr: the array
+ * @start: start
+ * @end: end
+ */
+void mergeSort(int *arr, int start, int end) {
 
 	if(start < end) {
 		int mid = (start + end) / 2;
-		mergeSort(Arr, start, mid);
-		mergeSort(Arr, mid+1, end);
-		merge(Arr, start, mid, end);
+		mergeSort(arr, start, mid);
+		mergeSort(arr, mid+1, end);
+		merge(arr, start, mid, end);
 	}
 }
 /**
