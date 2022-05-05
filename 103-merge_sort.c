@@ -8,6 +8,7 @@
  * @start: start
  * @mid: middle
  * @end: end
+ * @temp: temp array
  */
 void merge(int *arr, int start, int mid, int end, int *temp) {
 
@@ -52,6 +53,7 @@ void merge(int *arr, int start, int mid, int end, int *temp) {
  * @arr: the array
  * @start: start
  * @end: end
+ * @temp: temp array
  */
 void mergeSort(int *arr, int start, int end, int *temp) {
 
@@ -68,10 +70,11 @@ void mergeSort(int *arr, int start, int end, int *temp) {
  * @size: the size of array
  */
 void merge_sort(int *array, size_t size) {
-	int* temp = (int*)malloc((size) * sizeof(int));
+	int* temp;
 	if (size < 2) {
 		return;
 	}
+	temp = (int*)malloc((size) * sizeof(int));
     mergeSort(array, 0, size - 1, temp);
 	free(temp);
 }
