@@ -20,7 +20,8 @@ void merge(int *arr, int start, int mid, int end, int *temp)
 		if (arr[i] <= arr[j])
 		{
 			temp[k] = arr[i];
-			k += 1; i += 1;
+			k += 1;
+			i += 1;
 		}
 		else
 		{
@@ -57,11 +58,13 @@ void merge(int *arr, int start, int mid, int end, int *temp)
  * @end: end
  * @temp: temp array
  */
-void mergeSort(int *arr, int start, int end, int *temp) {
+void mergeSort(int *arr, int start, int end, int *temp)
+{
 
 	if (start < end)
 	{
 		int mid = (start + end) / 2;
+
 		mergeSort(arr, start, mid, temp);
 		mergeSort(arr, mid + 1, end, temp);
 		merge(arr, start, mid, end, temp);
