@@ -71,5 +71,8 @@ void mergeSort(int *arr, int start, int end) {
  * @size: the size of array
  */
 void merge_sort(int *array, size_t size) {
+	if (size < 2) {
+		return;
+	}
     mergeSort(array, 0, size - 1);
 }
