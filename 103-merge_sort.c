@@ -9,9 +9,7 @@
  * @mid: middle
  * @end: end
  */
-void merge(int *arr, int start, int mid, int end) {
-	
-	int* temp = (int*)malloc((end - start + 1) * sizeof(int));
+void merge(int *arr, int start, int mid, int end, int *temp) {
 
 	/* crawlers for both intervals and for temp */
 	int i = start, j = mid+1, k = 0;
@@ -45,7 +43,6 @@ void merge(int *arr, int start, int mid, int end) {
 	for(i = start; i <= end; i += 1) {
 		arr[i] = temp[i - start];
 	}
-	free(temp);
 }
 
 /* arr is an array of integer type */
@@ -56,13 +53,13 @@ void merge(int *arr, int start, int mid, int end) {
  * @start: start
  * @end: end
  */
-void mergeSort(int *arr, int start, int end) {
+void mergeSort(int *arr, int start, int end, int *temp) {
 
 	if(start < end) {
 		int mid = (start + end) / 2;
-		mergeSort(arr, start, mid);
-		mergeSort(arr, mid+1, end);
-		merge(arr, start, mid, end);
+		mergeSort(arr, start, mid, temp);
+		mergeSort(arr, mid + 1, end, temp);
+		merge(arr, start, mid, end, temp);
 	}
 }
 /**
@@ -71,8 +68,10 @@ void mergeSort(int *arr, int start, int end) {
  * @size: the size of array
  */
 void merge_sort(int *array, size_t size) {
+	int* temp = (int*)malloc((size) * sizeof(int));
 	if (size < 2) {
 		return;
 	}
-    mergeSort(array, 0, size - 1);
+    mergeSort(array, 0, size - 1, temp);
+	free(temp);
 }
