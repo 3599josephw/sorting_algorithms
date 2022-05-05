@@ -10,38 +10,47 @@
  * @end: end
  * @temp: temp array
  */
-void merge(int *arr, int start, int mid, int end, int *temp) {
-
+void merge(int *arr, int start, int mid, int end, int *temp)
+{
 	/* crawlers for both intervals and for temp */
-	int i = start, j = mid+1, k = 0;
+	int i = start, j = mid + 1, k = 0;
 
 	/* traverse both arrays and in each iteration add smaller of both elements in temp */
-	while(i <= mid && j <= end) {
-		if(arr[i] <= arr[j]) {
+	while (i <= mid && j <= end)
+	{
+		if (arr[i] <= arr[j])
+		{
 			temp[k] = arr[i];
 			k += 1; i += 1;
 		}
-		else {
+		else
+		{
 			temp[k] = arr[j];
-			k += 1; j += 1;
+			k += 1;
+			j += 1;
 		}
 	}
 
 	/* add elements left in the first interval */
 	
-	while(i <= mid) {
+	while (i <= mid)
+	{
 		temp[k] = arr[i];
-		k += 1; i += 1;
+		k += 1;
+		i += 1;
 	}
 
 	/* add elements left in the second interval */
-	while(j <= end) {
+	while (j <= end)
+	{
 		temp[k] = arr[j];
-		k += 1; j += 1;
+		k += 1;
+		j += 1;
 	}
 
 	/* copy temp to original interval */
-	for(i = start; i <= end; i += 1) {
+	for (i = start; i <= end; i += 1)
+	{
 		arr[i] = temp[i - start];
 	}
 }
@@ -57,7 +66,8 @@ void merge(int *arr, int start, int mid, int end, int *temp) {
  */
 void mergeSort(int *arr, int start, int end, int *temp) {
 
-	if(start < end) {
+	if (start < end)
+	{
 		int mid = (start + end) / 2;
 		mergeSort(arr, start, mid, temp);
 		mergeSort(arr, mid + 1, end, temp);
@@ -69,9 +79,11 @@ void mergeSort(int *arr, int start, int end, int *temp) {
  * @array: the array
  * @size: the size of array
  */
-void merge_sort(int *array, size_t size) {
+void merge_sort(int *array, size_t size)
+{
 	int* temp;
-	if (size < 2) {
+	if (size < 2) 
+	{
 		return;
 	}
 	temp = (int*)malloc((size) * sizeof(int));
