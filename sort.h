@@ -27,4 +27,6 @@ void swap(int *a, int *b);
 void merge_sort(int *array, size_t size);
 void mergeSort(int *arr, int start, int end, int *temp);
 void merge(int *Arr, int start, int mid, int end, int *temp);
+void heap_sort(int *array, size_t size);
+void heapify(int array[], int size, int i, size_t max_size);
 #endif
