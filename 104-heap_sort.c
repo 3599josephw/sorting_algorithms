@@ -10,9 +10,9 @@
  */
 void heapify(int array[], int size, int i, size_t max_size)
 {
-    int largest = i; // Initialize largest as root
-    int l = 2 * i + 1; // left = 2*i + 1
-    int r = 2 * i + 2; // right = 2*i + 2
+    int largest = i;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
     int tmp;
 
     if (l < size && array[l] > array[largest])
@@ -37,12 +37,13 @@ void heapify(int array[], int size, int i, size_t max_size)
 */
 void heap_sort(int *array, size_t size)
 {
-    int tmp, max_size = size;
-    for (int i = size / 2 - 1; i >= 0; i--) {
+    int i, tmp, max_size = size;
+
+    for (i = size / 2 - 1; i >= 0; i--) {
         heapify(array, size, i, max_size);
     }
 
-    for (int i = size - 1; i >= 0; i--) {
+    for (i = size - 1; i >= 0; i--) {
         tmp = array[0];
         array[0] = array[i];
         array[i] = tmp;
