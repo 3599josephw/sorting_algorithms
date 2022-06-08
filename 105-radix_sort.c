@@ -8,12 +8,15 @@
  * @size: size of the array
  * Return: the max value
  */
-int max_int(int *array, int size) {
+int max_int(int *array, int size)
+{
     int tmp = 0;
     int i;
 
-    for (i = 0; i < size; i++) {
-        if (array[i]> tmp){
+    for (i = 0; i < size; i++)
+    {
+        if (array[i] > tmp)
+        {
             tmp = array[i];
         }
     }
@@ -28,31 +31,37 @@ int max_int(int *array, int size) {
  * @count: the count
  * @result: the result
  */
-void countSort (int *array, int size, int exp, int *count, int *result) {
+void countSort (int *array, int size, int exp, int *count, int *result)
+{
     int lsd;
     int i, index;
 
-    for (i = 0; i < size; i++) {
+    for (i = 0; i < size; i++)
+    {
         count[i] = 0;
     }
 
-    for (i = 0; i < size; i++) {
+    for (i = 0; i < size; i++)
+    {
         lsd = (array[i] / exp) % 10;
         count[lsd]++;
     }
 
-    for (i = 1; i < size; i++) {
+    for (i = 1; i < size; i++)
+    {
         count[i] += count[i-1];
     }
 
-    for (i = size - 1; i >= 0; i--) {
+    for (i = size - 1; i >= 0; i--)
+    {
         lsd = (array[i] / exp) % 10;
         index = count[lsd] - 1;
         result[index] = array[i];
         count[(array[i] / exp) % 10]--;
     }
 
-    for (i = 0; i < size; i++) {
+    for (i = 0; i < size; i++)
+    {
         array[i] = result[i];
     }
 }
@@ -69,13 +78,15 @@ void radix_sort(int *array, size_t size){
     int *count = malloc(size * sizeof(int));
     int *result = malloc(sizeof(int) * size);
 
-    if (size < 2) {
+    if (size < 2)
+    {
         free(count);
         free(result);
         return;
     }
 
-    for (i = 1; m / i > 0; i = i * 10) {
+    for (i = 1; m / i > 0; i = i * 10)
+    {
         countSort(array, size, i, count, result);
         print_array(array, size);
     }
