@@ -6,6 +6,7 @@
  * max_int - gets the max int
  * @array: the array
  * @size: size of the array
+ * return: the max value
  */
 int max_int(int *array, int size) {
     int tmp = 0;
