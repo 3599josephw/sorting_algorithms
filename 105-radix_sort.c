@@ -66,9 +66,14 @@ void radix_sort(int *array, size_t size){
 
     int m = max_int(array, size);
     int i = 0;
-
     int *count = malloc(size * sizeof(int));
     int *result = malloc(sizeof(int) * size);
+
+    if (size < 2) {
+        free(count);
+        free(result);
+        return;
+    }
 
     for (i = 1; m / i > 0; i = i * 10) {
         countSort(array, size, i, count, result);
